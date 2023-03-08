@@ -1,24 +1,26 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import AuthForm from './component/form/AuthForm';
+import PrizeForm from './component/form/PrizeForm';
+import { UsersList } from './component/list/UsersList';
+import PrizesList from './component/list/PrizesList';
+import SpinList from './component/list/SpinList';
+import SpinPrizeList from './component/list/SpinPrizeList';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <BrowserRouter>
+        <Routes>
+          <Route path='/' element={<AuthForm />} />
+          <Route path='/prize/create' element={<PrizeForm prizeId={4} />} />
+          <Route path='/user/list' element={<UsersList />} />
+          <Route path='/prize/list' element={<PrizesList />} />
+          <Route path='/spin/list' element={<SpinList />} />
+          <Route path='/spin-prize/list' element={<SpinPrizeList />} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
